@@ -11,5 +11,5 @@ variable "cidr_subnet" {
   type = string
 }
 variable "tags" {
-  type = list
+  type = list(any)
 }

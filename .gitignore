@@ -1,6 +1,6 @@
 .terraform/
 *.pem
 *.backup
-*.tfstate
+*.tfstate*
 *.hcl
 report/*

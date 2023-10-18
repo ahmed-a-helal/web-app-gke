@@ -10,3 +10,8 @@ variable "region" {
 variable "cidr_subnet" {
   type = string
 }
+
+variable "vpc_description" {
+  type    = string
+  default = "This VPC is managed by terraform"
+}
