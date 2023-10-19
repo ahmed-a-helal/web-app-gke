@@ -4,4 +4,6 @@ provider "google" {
 
   region = var.region
 
+  credentials = "ahmed-attia-iti-terraform-access.json"
+
 }

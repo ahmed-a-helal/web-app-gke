@@ -4,3 +4,4 @@
 *.tfstate*
 *.hcl
 report/*
+*.json

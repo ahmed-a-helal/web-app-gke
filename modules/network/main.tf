@@ -7,8 +7,9 @@ resource "google_compute_network" "vpc" {
   # To create only the needed subnets
   auto_create_subnetworks = "false"
 
-  delete_default_routes_on_create = true
+  project = var.project
 
+  delete_default_routes_on_create = true
 
   routing_mode = "REGIONAL"
 
@@ -19,11 +20,13 @@ resource "google_compute_subnetwork" "eks-control-subnet" {
 
   ip_cidr_range = var.cidr_subnet
 
+  region = var.region
+
   network = google_compute_network.vpc.id
 }
 
 resource "google_compute_router" "nat-router" {
-  name = "my-router"
+  name = "${var.name_prefix}-nat-router"
 
   region = google_compute_subnetwork.eks-control-subnet.region
 
@@ -32,7 +35,7 @@ resource "google_compute_router" "nat-router" {
 
 resource "google_compute_router_nat" "nat" {
 
-  name = "${var.name_prefix}-nat-router"
+  name = "${var.name_prefix}-nat-route"
 
   router = google_compute_router.nat-router.name
 
