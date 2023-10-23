@@ -1,14 +1,12 @@
-variable "project" {
-  type = string
-}
 variable "name_prefix" {
   type = string
 }
-variable "region" {
-  type = string
-}
-variable "cidr_subnet" {
-  type = string
+variable "subnets" {
+  type = map(object({
+    name_suffix   = string
+    ip_cidr_range = string
+    region        = string
+  }))
 }
 
 variable "vpc_description" {

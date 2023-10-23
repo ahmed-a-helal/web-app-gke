@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongo
+spec:
+  selector:
+    matchLabels:
+      app: mongo
+  serviceName: "mongodb-service"
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: mongo
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+                - key: "app"
+                  operator: In
+                  values:
+                  - mongo
+            topologyKey: "kubernetes.io/hostname"
+      terminationGracePeriodSeconds: 10
+      volumes:
+      - name: mongodb-configmap
+        configMap:
+          name: mongodb-configmap
+      containers:
+      - name: mongo
+        image: europe-west1-docker.pkg.dev/ahmed-attia-iti/iti-webapp-project-repo/web:1
+        ports:
+          - containerPort: 27017
+        volumeMounts:
+          - name: data-volume
+            mountPath: /data/db
+          - mountPath: /scripts
+            name: mongodb-configmap
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-secret
+              key: mongo-root-username
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          valueFrom: 
+            secretKeyRef:
+              name: mongodb-secret
+              key: mongo-root-password
+        - name: DBDNS
+          value:  mongodb-service
+        - name: replicaName
+          value: rs0
+        - name: DBNAME
+          value: mongo        
+  volumeClaimTemplates:
+    - metadata:
+        name: data-volume
+      spec:
+        storageClassName: premium-rwo
+        accessModes: 
+        - "ReadWriteOnce"
+        resources:
+          requests:
+            storage: 5G

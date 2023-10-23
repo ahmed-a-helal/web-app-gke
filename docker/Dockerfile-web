@@ -1,0 +1,10 @@
+FROM docker.io/library/node:21-alpine3.17
+RUN apk add git
+RUN git clone https://github.com/Mostafa-Yehia/simple-node-app.git /app
+WORKDIR /app
+RUN npm i
+ENV WEBport="3000"
+ENV DBuser="test"
+ENV DBpass="test123"
+ENV DBhosts="mongo-0.mongo:27017"
+ENTRYPOINT [ "node","index.js" ]

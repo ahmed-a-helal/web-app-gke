@@ -1,13 +1,11 @@
-variable "project" {
-  type = string
-}
 variable "name_prefix" {
   type = string
 }
-variable "service_account" {
-  type = list(any)
-}
-
-variable "permissions" {
-  type = list(string)
+variable "service_accounts" {
+  type = map(object({
+    account_id  = string
+    name        = string
+    role_id     = string
+    permissions = list(string)
+  }))
 }

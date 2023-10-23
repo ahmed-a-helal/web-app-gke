@@ -1,0 +1,7 @@
+FROM mongo:5.0
+USER root
+COPY ./init.sh /
+ENV DBNAME="mongo"
+ENV DBDNS="mongo-service:27017"
+ENV replicaName="rs0"
+ENTRYPOINT [ "/bin/bash" "/init.sh" ]
