@@ -7,4 +7,5 @@ ENV DBhosts="mongo-0.mongo:27017"
 ENV WEBport="3000"
 ENV DBuser="test"
 ENV DBpass="test123"
+EXPOSE 3000
 ENTRYPOINT [ "node","index.js" ]
