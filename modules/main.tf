@@ -1,5 +1,8 @@
 locals {
-  repolink = join("/",[join("",[split("/", "${module.registry.id}")[3],"-docker.pkg.dev"]),split("/", "${module.registry.id}")[1],split("/", "${module.registry.id}")[5]])
+  repolink = join("/", [join("", [split("/", "${module.registry.id}")[3], "-docker.pkg.dev"]), split("/", "${module.registry.id}")[1], split("/", "${module.registry.id}")[5]])
+  command  = <<EOF
+    ./scripts/container_startup.sh  --zone "${module.compute.instance_zone}" --project "${data.google_client_config.self.project}" --dockerdir "${var.dockerdir}" --helmdir "${var.helmdir}"  --node "${module.compute.nodename}"      --region "${var.regions[1]}" --cluster "${module.compute.container_name}" --registry "${local.repolink}" --databaseimage "${var.database_image_name}" --webimage "${var.frontend_image_name}" --alpineimage "${var.alpine_image_name}"
+    EOF 
 }
 
 module "network" {
@@ -39,14 +42,15 @@ module "iam" {
         , "container.deployments.create", "container.deployments.delete", "container.deployments.get", "container.deployments.getScale", "container.deployments.getStatus", "container.deployments.list", "container.deployments.rollback", "container.deployments.update", "container.deployments.updateScale", "container.deployments.updateStatus"
         , "container.events.get", "container.events.list", "container.clusters.list", "container.clusters.get"
         , "container.persistentVolumeClaims.create", "container.persistentVolumeClaims.delete", "container.persistentVolumeClaims.get", "container.persistentVolumeClaims.getStatus", "container.persistentVolumeClaims.list", "container.persistentVolumeClaims.update", "container.persistentVolumeClaims.updateStatus"
-        , "artifactregistry.repositories.uploadArtifacts"]#,"artifactregistry.repositories.update","artifactregistry.repositories.get"
-        #,"artifactregistry.dockerimages.get","artifactregistry.dockerimages.list","artifactregistry.files.get","artifactregistry.files.list","artifactregistry.locations.get","artifactregistry.locations.list","artifactregistry.tags.create","artifactregistry.tags.delete","artifactregistry.tags.get","artifactregistry.tags.list","artifactregistry.tags.update"]
-}
+        , "container.serviceAccounts.create", "container.serviceAccounts.createToken", "container.serviceAccounts.delete", "container.serviceAccounts.get", "container.serviceAccounts.list", "container.serviceAccounts.update"
+      , "artifactregistry.repositories.uploadArtifacts"] #,"artifactregistry.repositories.update","artifactregistry.repositories.get"
+      #,"artifactregistry.dockerimages.get","artifactregistry.dockerimages.list","artifactregistry.files.get","artifactregistry.files.list","artifactregistry.locations.get","artifactregistry.locations.list","artifactregistry.tags.create","artifactregistry.tags.delete","artifactregistry.tags.get","artifactregistry.tags.list","artifactregistry.tags.update"]
+    }
     kube = {
       account_id  = "artifact-access-tf"
       name        = "instance with docker artifact access"
       role_id     = "artifact_access_tf"
-      permissions = ["artifactregistry.repositories.downloadArtifacts"]
+      permissions = ["artifactregistry.repositories.downloadArtifacts", "artifactregistry.dockerimages.get", "artifactregistry.dockerimages.list", "artifactregistry.locations.get", "artifactregistry.locations.list"]
     }
   }
 }
@@ -69,26 +73,24 @@ module "registry" {
 
 
 resource "null_resource" "kubernetis_apply" {
-  
+
   triggers = {
     always_run = "${timestamp()}"
   }
-  depends_on = [ module.compute ]
+  depends_on = [module.compute]
 
   provisioner "local-exec" {
-    command = ./scripts/container_startup.sh  --zone "${module.compute.instance_zone}" --project "${data.google_client_config.self.project}" --dockerfolder "${var.dockerfolder}" --kubernetisfolder "${var.manifests}"  --node "${module.compute.nodename}"      --region "${var.regions[1]}" --cluster "${module.compute.container_name}" --registry "${local.repolink}" --databaseimage "${var.database_image_name}" --webimage "${var.frontend_image_name}" 
-    }
+    command = local.command
+  }
 
-  
+
 }
 
 output "update_command" {
-  value =<<EOF
-./scripts/container_startup.sh  --zone "${module.compute.instance_zone}" --project "${data.google_client_config.self.project}"
-      --dockerfolder "${var.dockerfolder}" --kubernetisfolder "${var.manifests}"  --node "${module.compute.nodename}"
-      --region "${var.regions[1]}" --cluster "${module.compute.container_name}" --registry "${local.repolink}"
-      --databaseimage "${var.database_image_name}" --webimage "${var.frontend_image_name}" 
-    EOF
+  value = local.command
+}
+output "ssh_command" {
+  value = "gcloud compute ssh --project ${data.google_client_config.self.project} --zone ${module.compute.instance_zone} --tunnel-through-iap  ${module.compute.nodename}  "
 }
 data "google_client_config" "self" {
 

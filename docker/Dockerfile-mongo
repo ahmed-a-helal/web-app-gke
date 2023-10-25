@@ -1,7 +1,4 @@
-FROM mongo:5.0
+FROM docker.io/library/mongo:7.0.2-jammy
 USER root
 COPY ./init.sh /
-ENV DBNAME="mongo"
-ENV DBDNS="mongo-service:27017"
-ENV replicaName="rs0"
-ENTRYPOINT [ "/bin/bash" "/init.sh" ]
+ENTRYPOINT ["docker-entrypoint.sh" ]

@@ -12,19 +12,27 @@ variable "cidr_subnet" {
   description = "This is the cidr range of the subnets"
 }
 
-variable "dockerfolder" {
-  type = string
+variable "dockerdir" {
+  type    = string
   default = "docker"
 }
-variable "manifests" {
-  type = string
+variable "kubernetisdir" {
+  type    = string
   default = "manifests"
 }
+variable "helmdir" {
+  type    = string
+  default = "helm"
+}
 variable "database_image_name" {
-  type = string
+  type    = string
   default = "mongo:1"
 }
 variable "frontend_image_name" {
-  type = string
+  type    = string
   default = "web:1"
+}
+variable "alpine_image_name" {
+  type    = string
+  default = "alpine:1"
 }

@@ -2,7 +2,7 @@ resource "google_compute_network" "vpc" {
 
   name                    = "${var.name_prefix}-vpc"
   description             = var.vpc_description
-  auto_create_subnetworks = "false" # To create only the needed subnets
+  auto_create_subnetworks = "false" # To disable 
   routing_mode            = "REGIONAL"
 }
 resource "google_compute_subnetwork" "subnets" {
@@ -25,7 +25,11 @@ resource "google_compute_router_nat" "nat" {
   router                             = google_compute_router.nat-router.name
   region                             = values(google_compute_subnetwork.subnets)[0].region
   nat_ip_allocate_option             = "AUTO_ONLY"
-  source_subnetwork_ip_ranges_to_nat = "ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES"
+  source_subnetwork_ip_ranges_to_nat = "LIST_OF_SUBNETWORKS"
+  subnetwork {
+    name                    = values(google_compute_subnetwork.subnets)[0].id
+    source_ip_ranges_to_nat = ["PRIMARY_IP_RANGE"]
+  }
 }
 
 

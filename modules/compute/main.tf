@@ -2,7 +2,7 @@ locals {
   gke_cluster = {
     name                   = "${var.name_prefix}-cluster"
     node_pool_name         = "${var.name_prefix}-pool-1"
-    machine_type           = "n2-standard-2"
+    machine_type           = "e2-standard-2"
     service_account_email  = var.gke_service_account_email
     location               = data.google_compute_subnetwork.gke_subnet.region
     node_count             = 1
@@ -18,7 +18,7 @@ locals {
     machine_type          = "n2-standard-2"
     subnet                = "${data.google_compute_subnetwork.management_subnet.id}"
     zone                  = "${data.google_compute_subnetwork.management_subnet.region}-b"
-    tags                  = var.management_node_tags
+    tags                  = var.management_node_tags[0]
     image                 = "debian-cloud/debian-11"
     service_account_email = var.management_node_service_account_email
     startup_script        = <<EOF
@@ -32,13 +32,14 @@ locals {
     sudo apt-get update -y
     sudo apt-get install google-cloud-sdk-gke-gcloud-auth-plugin docker-clean docker.io docker docker-compose -y    
     gcloud container clusters get-credentials ${local.gke_cluster.name} --region ${data.google_compute_subnetwork.gke_subnet.region} --project ${data.google_compute_subnetwork.gke_subnet.project}
+    curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+    helm completion bash > /etc/bash_completion.d/helm
     EOF
-
-    # local_files_transfere = var.trans_files
-    # post_transfere_script = var.post_trans_script
-
   }
 }
+data "google_project" "project" {
+}
+
 data "google_compute_subnetwork" "management_subnet" {
   project = split("/", "${var.management_node_subnet}")[1]
   region  = split("/", "${var.management_node_subnet}")[3]
@@ -50,16 +51,16 @@ data "google_compute_subnetwork" "gke_subnet" {
   name    = split("/", "${var.gke_subnet}")[5]
 }
 resource "google_compute_instance" "gks_control" {
-  name         = local.management_node.name
-  machine_type = local.management_node.machine_type
-  zone         = local.management_node.zone
-  tags         = local.management_node.tags[0]
+  name                    = local.management_node.name
+  machine_type            = local.management_node.machine_type
+  zone                    = local.management_node.zone
+  tags                    = local.management_node.tags
   metadata_startup_script = local.management_node.startup_script
-  depends_on = [ google_container_cluster.primary ]
+  depends_on              = [google_container_cluster.primary]
   boot_disk {
     initialize_params {
       image = local.management_node.image
-      size = 50
+      size  = 50
     }
   }
   network_interface {
@@ -102,12 +103,8 @@ resource "google_container_cluster" "primary" {
     }
 
   }
-  node_config {
-    disk_size_gb = 50
-  }
-
-
 }
+
 
 resource "google_container_node_pool" "pool1" {
   name       = local.gke_cluster.node_pool_name
@@ -119,9 +116,6 @@ resource "google_container_node_pool" "pool1" {
     preemptible     = false
     machine_type    = local.gke_cluster.machine_type
     service_account = local.gke_cluster.service_account_email
-    oauth_scopes = [
-      "https://www.googleapis.com/auth/cloud-platform"
-    ]
   }
   upgrade_settings {
     max_surge       = 2

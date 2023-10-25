@@ -5,3 +5,5 @@
 *.hcl
 report/*
 *.json
+manifests/
+.trash/
