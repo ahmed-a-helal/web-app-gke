@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.MongoService }}
+  namespace: {{ .Values.Namespace }}
+  labels:
+    app: {{ .Values.MongoLabel }}
+spec:
+  ports:
+    - port: {{ .Values.AppOutputPort }}
+      targetPort: {{ .Values.MongoPort }}
+  clusterIP: None
+  selector:
+    app: {{ .Values.MongoLabel }}

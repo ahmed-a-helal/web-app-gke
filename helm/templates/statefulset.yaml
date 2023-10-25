@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Values.MongoLabel }}
+  namespace: {{ .Values.Namespace }}
+
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.MongoLabel }}
+  serviceName: {{ .Values.MongoService }}
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.MongoLabel }}
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+                - key: "app"
+                  operator: In
+                  values:
+                  - {{ .Values.MongoLabel }}
+            topologyKey: "kubernetes.io/hostname"
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: {{ .Values.MongoLabel }}
+        imagePullPolicy: Always
+        image: "{{ .Values.MongoImage }}:{{ .Values.MongoImageTag }}"
+        command:
+        - "/bin/bash"
+        - "/init.sh"
+        - "mongod"
+        - "--replSet"
+        - rs0
+        - "--bind_ip"
+        - "0.0.0.0"
+        ports:
+          - containerPort: {{ .Values.MongoPort }}
+        volumeMounts:
+          - name: data-volume
+            mountPath: /data/db
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.MongoSecret }}
+              key: mongo-root-username
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          valueFrom: 
+            secretKeyRef:
+              name: {{ .Values.MongoSecret }}
+              key: mongo-root-password
+  volumeClaimTemplates:
+    - metadata:
+        name: data-volume
+      spec:
+        storageClassName: {{ .Values.storageClassType }}
+        accessModes: 
+        - "ReadWriteOnce"
+        resources:
+          requests:
+            storage: {{ .Values.StorageSize }}

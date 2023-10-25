@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.AppService }}
+  namespace: {{ .Values.Namespace }}
+  labels:
+    name: {{ .Values.AppLabel }}
+spec:
+  allocateLoadBalancerNodePorts: false
+  ports:
+    - targetPort: {{ .Values.AppPort }}
+      port: {{ .Values.AppOutputPort }}
+  selector:
+    app: {{ .Values.AppLabel }}
+  type: LoadBalancer

@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.AppLabel }}
+  namespace: {{ .Values.Namespace }}
+  labels:
+    app: {{ .Values.AppLabel }}
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: {{ .Values.AppLabel }}
+
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.AppLabel }}
+    spec:
+      containers:
+      - name: webapp
+        image: "{{ .Values.AppImage }}:{{ .Values.AppImageTag }}"
+        ports:
+        - containerPort: {{ .Values.AppPort }}
+        env:
+        - name: DBuser
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.MongoSecret }}
+              key: mongo-root-username
+        - name: DBpass
+          valueFrom: 
+            secretKeyRef:
+              name: {{ .Values.MongoSecret }}
+              key: mongo-root-password
+        - name: DBhosts
+          value: "{{ .Values.MongoService }}:{{ .Values.MongoPort }}"
+        - name: webport
+          value: {{ .Values.AppPort | quote }}
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+      initContainers:
+        - name: delay
+          image: "{{ .Values.InitImage }}:{{ .Values.InitImageTag }}"
+          command: 
+          - "sleep"
+          - {{ .Values.Delay | quote }}
