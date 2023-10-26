@@ -54,7 +54,7 @@ terraform apply
 
 ## Testing and Access to the App Deployed on GKE
  
-
+![](./screenshots/test.png)
 
 ### Access the Management Instance through the output command given by Terraform
 
