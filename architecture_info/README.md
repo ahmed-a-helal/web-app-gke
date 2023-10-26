@@ -1,3 +1,29 @@
+# Terraform Setup 
+
+## Terraform Remote Bucket 
+
+![](../screenshots/tf_remote_bucket.png)
+
+## Terraform used service accounts
+
+one for bucket access and the other for applying the infrastructure
+
+![](../screenshots/tf_SA.png)
+
+![](../screenshots/tf_SA.png)
+
+## Terraform Acting Infrastructure Creation Service Account's Roles And Permmissions
+
+![](../screenshots/tf_acting_roles.png)
+
+##  Terrform Acting Permissions (for Applying and Destroying the infrastructure)
+
+![](../screenshots/tf_acting_roles.png)
+
+## Terraform Bucket Access on the level of the bucket itself 
+
+![](../screenshots/tf_bucket_access.png)
+
 # NETWORK
 
 ![Virtual Private Network](../screenshots/network_vpc.png)
