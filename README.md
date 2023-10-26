@@ -14,6 +14,8 @@ This project is about a simple two-tier application that offers the following fe
 8. The cluster and the management nodes are kept in 2 different regions entirely.
 9. The Kubernetes manifest files are maintained through Helm for better and easier management.
 
+![](./screenshots/infra_schema.png)
+
 ## Infrastructure as Code (Terraform)
 
 I have used cascaded modules to increase modularity, and the entire infrastructure can be deployed through the modules only.
