@@ -34,23 +34,22 @@ module "iam" {
       role_id    = "kube_admin"
       permissions = ["container.configMaps.create", "container.configMaps.delete", "container.configMaps.get", "container.configMaps.list", "container.configMaps.update"
         , "container.nodes.get", "container.nodes.list"
-        , "container.pods.attach", "container.pods.create", "container.pods.delete", "container.pods.evict", "container.pods.exec", "container.pods.get", "container.pods.getLogs", "container.pods.getStatus", "container.pods.initialize", "container.pods.list", "container.pods.portForward", "container.pods.proxy", "container.pods.update", "container.pods.updateStatus"
+        , "container.pods.attach", "container.pods.create", "container.pods.delete", "container.pods.evict", "container.pods.exec", "container.pods.get", "container.pods.getLogs", "container.pods.getStatus", "container.pods.initialize", "container.pods.list","container.pods.update", "container.pods.updateStatus" # "container.pods.portForward", "container.pods.proxy", 
         , "container.secrets.create", "container.secrets.delete", "container.secrets.get", "container.secrets.list", "container.secrets.update"
-        , "container.services.create", "container.services.delete", "container.services.get", "container.services.getStatus", "container.services.list", "container.services.proxy", "container.services.update", "container.services.updateStatus"
-        , "container.replicaSets.create", "container.replicaSets.delete", "container.replicaSets.get", "container.replicaSets.getScale", "container.replicaSets.getStatus", "container.replicaSets.list", "container.replicaSets.update", "container.replicaSets.updateScale", "container.replicaSets.updateStatus"
+        , "container.services.create", "container.services.delete", "container.services.get", "container.services.getStatus", "container.services.list", "container.services.update"#, "container.services.proxy", "container.services.updateStatus"
+        #, "container.replicaSets.create", "container.replicaSets.delete", "container.replicaSets.get", "container.replicaSets.getScale", "container.replicaSets.getStatus", "container.replicaSets.list", "container.replicaSets.update", "container.replicaSets.updateScale", "container.replicaSets.updateStatus"
         , "container.statefulSets.create", "container.statefulSets.delete", "container.statefulSets.get", "container.statefulSets.getScale", "container.statefulSets.getStatus", "container.statefulSets.list", "container.statefulSets.update", "container.statefulSets.updateScale", "container.statefulSets.updateStatus"
         , "container.deployments.create", "container.deployments.delete", "container.deployments.get", "container.deployments.getScale", "container.deployments.getStatus", "container.deployments.list", "container.deployments.rollback", "container.deployments.update", "container.deployments.updateScale", "container.deployments.updateStatus"
-        , "container.events.get", "container.events.list", "container.clusters.list", "container.clusters.get"
+        , "container.events.get", "container.events.list", "container.clusters.get"
         , "container.persistentVolumeClaims.create", "container.persistentVolumeClaims.delete", "container.persistentVolumeClaims.get", "container.persistentVolumeClaims.getStatus", "container.persistentVolumeClaims.list", "container.persistentVolumeClaims.update", "container.persistentVolumeClaims.updateStatus"
         , "container.serviceAccounts.create", "container.serviceAccounts.createToken", "container.serviceAccounts.delete", "container.serviceAccounts.get", "container.serviceAccounts.list", "container.serviceAccounts.update"
-      , "artifactregistry.repositories.uploadArtifacts"] #,"artifactregistry.repositories.update","artifactregistry.repositories.get"
-      #,"artifactregistry.dockerimages.get","artifactregistry.dockerimages.list","artifactregistry.files.get","artifactregistry.files.list","artifactregistry.locations.get","artifactregistry.locations.list","artifactregistry.tags.create","artifactregistry.tags.delete","artifactregistry.tags.get","artifactregistry.tags.list","artifactregistry.tags.update"]
+        , "artifactregistry.repositories.uploadArtifacts"]
     }
     kube = {
       account_id  = "artifact-access-tf"
       name        = "instance with docker artifact access"
       role_id     = "artifact_access_tf"
-      permissions = ["artifactregistry.repositories.downloadArtifacts", "artifactregistry.dockerimages.get", "artifactregistry.dockerimages.list", "artifactregistry.locations.get", "artifactregistry.locations.list"]
+      permissions = ["artifactregistry.repositories.downloadArtifacts",]
     }
   }
 }

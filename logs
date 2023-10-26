@@ -1,10 +1,9 @@
-Acquiring state lock. This may take a few moments...
-[0m[1mmodule.architecture.module.iam.data.google_client_config.this: Reading...[0m[0m
-[0m[1mmodule.architecture.data.google_client_config.self: Reading...[0m[0m
 [0m[1mmodule.architecture.module.compute.data.google_project.project: Reading...[0m[0m
+[0m[1mmodule.architecture.data.google_client_config.self: Reading...[0m[0m
+[0m[1mmodule.architecture.module.iam.data.google_client_config.this: Reading...[0m[0m
 [0m[1mmodule.architecture.module.iam.data.google_client_config.this: Read complete after 0s [id=projects/"ahmed-attia-iti"/regions/"europe-west8"/zones/<null>][0m
 [0m[1mmodule.architecture.data.google_client_config.self: Read complete after 0s [id=projects/"ahmed-attia-iti"/regions/"europe-west8"/zones/<null>][0m
-[0m[1mmodule.architecture.module.compute.data.google_project.project: Read complete after 2s [id=projects/ahmed-attia-iti][0m
+[0m[1mmodule.architecture.module.compute.data.google_project.project: Read complete after 7s [id=projects/ahmed-attia-iti][0m
 
 Terraform used the selected providers to generate the following execution
 plan. Resource actions are indicated with the following symbols:
@@ -249,7 +248,6 @@ Terraform will perform the following actions:
       [32m+[0m[0m permissions = [
           [32m+[0m[0m "artifactregistry.repositories.uploadArtifacts",
           [32m+[0m[0m "container.clusters.get",
-          [32m+[0m[0m "container.clusters.list",
           [32m+[0m[0m "container.configMaps.create",
           [32m+[0m[0m "container.configMaps.delete",
           [32m+[0m[0m "container.configMaps.get",
@@ -286,19 +284,8 @@ Terraform will perform the following actions:
           [32m+[0m[0m "container.pods.getStatus",
           [32m+[0m[0m "container.pods.initialize",
           [32m+[0m[0m "container.pods.list",
-          [32m+[0m[0m "container.pods.portForward",
-          [32m+[0m[0m "container.pods.proxy",
           [32m+[0m[0m "container.pods.update",
           [32m+[0m[0m "container.pods.updateStatus",
-          [32m+[0m[0m "container.replicaSets.create",
-          [32m+[0m[0m "container.replicaSets.delete",
-          [32m+[0m[0m "container.replicaSets.get",
-          [32m+[0m[0m "container.replicaSets.getScale",
-          [32m+[0m[0m "container.replicaSets.getStatus",
-          [32m+[0m[0m "container.replicaSets.list",
-          [32m+[0m[0m "container.replicaSets.update",
-          [32m+[0m[0m "container.replicaSets.updateScale",
-          [32m+[0m[0m "container.replicaSets.updateStatus",
           [32m+[0m[0m "container.secrets.create",
           [32m+[0m[0m "container.secrets.delete",
           [32m+[0m[0m "container.secrets.get",
@@ -315,9 +302,7 @@ Terraform will perform the following actions:
           [32m+[0m[0m "container.services.get",
           [32m+[0m[0m "container.services.getStatus",
           [32m+[0m[0m "container.services.list",
-          [32m+[0m[0m "container.services.proxy",
           [32m+[0m[0m "container.services.update",
-          [32m+[0m[0m "container.services.updateStatus",
           [32m+[0m[0m "container.statefulSets.create",
           [32m+[0m[0m "container.statefulSets.delete",
           [32m+[0m[0m "container.statefulSets.get",
@@ -341,10 +326,6 @@ Terraform will perform the following actions:
       [32m+[0m[0m id          = (known after apply)
       [32m+[0m[0m name        = (known after apply)
       [32m+[0m[0m permissions = [
-          [32m+[0m[0m "artifactregistry.dockerimages.get",
-          [32m+[0m[0m "artifactregistry.dockerimages.list",
-          [32m+[0m[0m "artifactregistry.locations.get",
-          [32m+[0m[0m "artifactregistry.locations.list",
           [32m+[0m[0m "artifactregistry.repositories.downloadArtifacts",
         ]
       [32m+[0m[0m project     = "ahmed-attia-iti"
@@ -530,44 +511,43 @@ Changes to Outputs:
 [0m[1mmodule.architecture.module.network.google_compute_network.vpc: Creating...[0m[0m
 [0m[1mmodule.architecture.module.registry.google_artifact_registry_repository.my-repo: Creating...[0m[0m
 [0m[1mmodule.architecture.module.iam.google_project_iam_custom_role.custom_roles["instance"]: Creating...[0m[0m
-[0m[1mmodule.architecture.module.iam.google_service_account.service_account["instance"]: Creation complete after 2s [id=projects/ahmed-attia-iti/serviceAccounts/kube-admin-tf@ahmed-attia-iti.iam.gserviceaccount.com][0m
 [0m[1mmodule.architecture.module.iam.google_service_account.service_account["kube"]: Creation complete after 3s [id=projects/ahmed-attia-iti/serviceAccounts/artifact-access-tf@ahmed-attia-iti.iam.gserviceaccount.com][0m
-[0m[1mmodule.architecture.module.registry.google_artifact_registry_repository.my-repo: Creation complete after 3s [id=projects/ahmed-attia-iti/locations/us-east1/repositories/iti-webapp-project-repo][0m
+[0m[1mmodule.architecture.module.iam.google_service_account.service_account["instance"]: Creation complete after 3s [id=projects/ahmed-attia-iti/serviceAccounts/kube-admin-tf@ahmed-attia-iti.iam.gserviceaccount.com][0m
 [0m[1mmodule.architecture.module.iam.google_project_iam_custom_role.custom_roles["instance"]: Creation complete after 4s [id=projects/ahmed-attia-iti/roles/kube_admin][0m
 [0m[1mmodule.architecture.module.iam.google_project_iam_custom_role.custom_roles["kube"]: Creation complete after 4s [id=projects/ahmed-attia-iti/roles/artifact_access_tf][0m
-[0m[1mmodule.architecture.module.iam.google_project_iam_binding.bindings["kube"]: Creating...[0m[0m
 [0m[1mmodule.architecture.module.iam.google_project_iam_binding.bindings["instance"]: Creating...[0m[0m
+[0m[1mmodule.architecture.module.iam.google_project_iam_binding.bindings["kube"]: Creating...[0m[0m
+[0m[1mmodule.architecture.module.registry.google_artifact_registry_repository.my-repo: Creation complete after 7s [id=projects/ahmed-attia-iti/locations/us-east1/repositories/iti-webapp-project-repo][0m
 [0m[1mmodule.architecture.module.network.google_compute_network.vpc: Still creating... [10s elapsed][0m[0m
 [0m[1mmodule.architecture.module.iam.google_project_iam_binding.bindings["instance"]: Still creating... [10s elapsed][0m[0m
 [0m[1mmodule.architecture.module.iam.google_project_iam_binding.bindings["kube"]: Still creating... [10s elapsed][0m[0m
+[0m[1mmodule.architecture.module.iam.google_project_iam_binding.bindings["kube"]: Creation complete after 10s [id=ahmed-attia-iti/projects/ahmed-attia-iti/roles/artifact_access_tf][0m
 [0m[1mmodule.architecture.module.iam.google_project_iam_binding.bindings["instance"]: Creation complete after 11s [id=ahmed-attia-iti/projects/ahmed-attia-iti/roles/kube_admin][0m
-[0m[1mmodule.architecture.module.iam.google_project_iam_binding.bindings["kube"]: Creation complete after 11s [id=ahmed-attia-iti/projects/ahmed-attia-iti/roles/artifact_access_tf][0m
 [0m[1mmodule.architecture.module.network.google_compute_network.vpc: Still creating... [20s elapsed][0m[0m
-[0m[1mmodule.architecture.module.network.google_compute_network.vpc: Creation complete after 23s [id=projects/ahmed-attia-iti/global/networks/iti-webapp-project-vpc][0m
-[0m[1mmodule.architecture.module.network.google_compute_subnetwork.subnets["kube"]: Creating...[0m[0m
+[0m[1mmodule.architecture.module.network.google_compute_network.vpc: Creation complete after 28s [id=projects/ahmed-attia-iti/global/networks/iti-webapp-project-vpc][0m
 [0m[1mmodule.architecture.module.network.google_compute_subnetwork.subnets["instance"]: Creating...[0m[0m
+[0m[1mmodule.architecture.module.network.google_compute_subnetwork.subnets["kube"]: Creating...[0m[0m
 [0m[1mmodule.architecture.module.network.google_compute_firewall.allow-ssh-ingress-from-iap: Creating...[0m[0m
+[0m[1mmodule.architecture.module.network.google_compute_subnetwork.subnets["instance"]: Still creating... [10s elapsed][0m[0m
 [0m[1mmodule.architecture.module.network.google_compute_firewall.allow-ssh-ingress-from-iap: Still creating... [10s elapsed][0m[0m
 [0m[1mmodule.architecture.module.network.google_compute_subnetwork.subnets["kube"]: Still creating... [10s elapsed][0m[0m
-[0m[1mmodule.architecture.module.network.google_compute_subnetwork.subnets["instance"]: Still creating... [10s elapsed][0m[0m
-[0m[1mmodule.architecture.module.network.google_compute_subnetwork.subnets["kube"]: Creation complete after 12s [id=projects/ahmed-attia-iti/regions/us-east1/subnetworks/iti-webapp-project-kube][0m
-[0m[1mmodule.architecture.module.network.google_compute_firewall.allow-ssh-ingress-from-iap: Still creating... [20s elapsed][0m[0m
+[0m[1mmodule.architecture.module.network.google_compute_firewall.allow-ssh-ingress-from-iap: Creation complete after 13s [id=projects/ahmed-attia-iti/global/firewalls/allow-ssh-from-iap][0m
+[0m[1mmodule.architecture.module.network.google_compute_subnetwork.subnets["kube"]: Creation complete after 14s [id=projects/ahmed-attia-iti/regions/us-east1/subnetworks/iti-webapp-project-kube][0m
 [0m[1mmodule.architecture.module.network.google_compute_subnetwork.subnets["instance"]: Still creating... [20s elapsed][0m[0m
-[0m[1mmodule.architecture.module.network.google_compute_subnetwork.subnets["instance"]: Creation complete after 22s [id=projects/ahmed-attia-iti/regions/europe-west8/subnetworks/iti-webapp-project-control-subnet][0m
-[0m[1mmodule.architecture.module.network.google_compute_firewall.allow-ssh-ingress-from-iap: Creation complete after 23s [id=projects/ahmed-attia-iti/global/firewalls/allow-ssh-from-iap][0m
+[0m[1mmodule.architecture.module.network.google_compute_subnetwork.subnets["instance"]: Creation complete after 24s [id=projects/ahmed-attia-iti/regions/europe-west8/subnetworks/iti-webapp-project-control-subnet][0m
 [0m[1mmodule.architecture.module.compute.data.google_compute_subnetwork.gke_subnet: Reading...[0m[0m
 [0m[1mmodule.architecture.module.compute.data.google_compute_subnetwork.management_subnet: Reading...[0m[0m
 [0m[1mmodule.architecture.module.network.google_compute_router.nat-router: Creating...[0m[0m
-[0m[1mmodule.architecture.module.compute.data.google_compute_subnetwork.management_subnet: Read complete after 0s [id=projects/ahmed-attia-iti/regions/europe-west8/subnetworks/iti-webapp-project-control-subnet][0m
+[0m[1mmodule.architecture.module.compute.data.google_compute_subnetwork.management_subnet: Read complete after 1s [id=projects/ahmed-attia-iti/regions/europe-west8/subnetworks/iti-webapp-project-control-subnet][0m
 [0m[1mmodule.architecture.module.compute.data.google_compute_subnetwork.gke_subnet: Read complete after 1s [id=projects/ahmed-attia-iti/regions/us-east1/subnetworks/iti-webapp-project-kube][0m
 [0m[1mmodule.architecture.module.compute.google_container_cluster.primary: Creating...[0m[0m
 [0m[1mmodule.architecture.module.network.google_compute_router.nat-router: Still creating... [10s elapsed][0m[0m
 [0m[1mmodule.architecture.module.compute.google_container_cluster.primary: Still creating... [10s elapsed][0m[0m
-[0m[1mmodule.architecture.module.network.google_compute_router.nat-router: Creation complete after 12s [id=projects/ahmed-attia-iti/regions/europe-west8/routers/iti-webapp-project-nat-router][0m
+[0m[1mmodule.architecture.module.network.google_compute_router.nat-router: Creation complete after 13s [id=projects/ahmed-attia-iti/regions/europe-west8/routers/iti-webapp-project-nat-router][0m
 [0m[1mmodule.architecture.module.network.google_compute_router_nat.nat: Creating...[0m[0m
 [0m[1mmodule.architecture.module.compute.google_container_cluster.primary: Still creating... [20s elapsed][0m[0m
 [0m[1mmodule.architecture.module.network.google_compute_router_nat.nat: Still creating... [10s elapsed][0m[0m
-[0m[1mmodule.architecture.module.network.google_compute_router_nat.nat: Creation complete after 12s [id=ahmed-attia-iti/europe-west8/iti-webapp-project-nat-router/iti-webapp-project-nat][0m
+[0m[1mmodule.architecture.module.network.google_compute_router_nat.nat: Creation complete after 13s [id=ahmed-attia-iti/europe-west8/iti-webapp-project-nat-router/iti-webapp-project-nat][0m
 [0m[1mmodule.architecture.module.compute.google_container_cluster.primary: Still creating... [30s elapsed][0m[0m
 [0m[1mmodule.architecture.module.compute.google_container_cluster.primary: Still creating... [40s elapsed][0m[0m
 [0m[1mmodule.architecture.module.compute.google_container_cluster.primary: Still creating... [50s elapsed][0m[0m
@@ -616,9 +596,7 @@ Changes to Outputs:
 [0m[1mmodule.architecture.module.compute.google_container_cluster.primary: Still creating... [8m0s elapsed][0m[0m
 [0m[1mmodule.architecture.module.compute.google_container_cluster.primary: Still creating... [8m10s elapsed][0m[0m
 [0m[1mmodule.architecture.module.compute.google_container_cluster.primary: Still creating... [8m20s elapsed][0m[0m
-[0m[1mmodule.architecture.module.compute.google_container_cluster.primary: Still creating... [8m30s elapsed][0m[0m
-[0m[1mmodule.architecture.module.compute.google_container_cluster.primary: Still creating... [8m40s elapsed][0m[0m
-[0m[1mmodule.architecture.module.compute.google_container_cluster.primary: Creation complete after 8m45s [id=projects/ahmed-attia-iti/locations/us-east1/clusters/iti-webapp-project-cluster][0m
+[0m[1mmodule.architecture.module.compute.google_container_cluster.primary: Creation complete after 8m24s [id=projects/ahmed-attia-iti/locations/us-east1/clusters/iti-webapp-project-cluster][0m
 [0m[1mmodule.architecture.module.compute.google_compute_instance.gks_control: Creating...[0m[0m
 [0m[1mmodule.architecture.module.compute.google_container_node_pool.pool1: Creating...[0m[0m
 [0m[1mmodule.architecture.module.compute.google_compute_instance.gks_control: Still creating... [10s elapsed][0m[0m
@@ -638,9 +616,8 @@ Changes to Outputs:
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mTo increase the performance of the tunnel, consider installing NumPy. For instructions,
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mplease see https://cloud.google.com/iap/docs/using-tcp-forwarding#increasing_the_tcp_upload_bandwidth
 
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mWarning: Permanently added 'compute.3004954449951367050' (ED25519) to the list of known hosts.
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mWarning: Permanently added 'compute.7165183665483799232' (ED25519) to the list of known hosts.
 [0m[1mmodule.architecture.null_resource.kubernetis_apply: Still creating... [10s elapsed][0m[0m
-[0m[1mmodule.architecture.null_resource.kubernetis_apply: Still creating... [20s elapsed][0m[0m
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mWARNING:
 
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mTo increase the performance of the tunnel, consider installing NumPy. For instructions,
@@ -648,34 +625,33 @@ Changes to Outputs:
 
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mFetching cluster endpoint and auth data.
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mkubeconfig entry generated for iti-webapp-project-cluster.
+[0m[1mmodule.architecture.null_resource.kubernetis_apply: Still creating... [20s elapsed][0m[0m
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mAdding credentials for: us-east1-docker.pkg.dev
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mDocker configuration file updated.
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mSending build context to Docker daemon  6.144kB
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 1/10 : FROM docker.io/library/node:21-alpine3.17
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 1/11 : FROM docker.io/library/node:21-alpine3.17
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m21-alpine3.17: Pulling from library/node
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m9398808236ff: Pulling fs layer
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m9435942978a8: Pulling fs layer
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0me3224c89a676: Pulling fs layer
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mb1aefb76c976: Pulling fs layer
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mb1aefb76c976: Waiting
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0me3224c89a676: Verifying Checksum
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0me3224c89a676: Download complete
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mb4340dbb4038: Pulling fs layer
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m7d026b0a28dd: Pulling fs layer
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mae32898c3dd5: Pulling fs layer
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mae32898c3dd5: Waiting
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m7d026b0a28dd: Verifying Checksum
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m7d026b0a28dd: Download complete
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m9398808236ff: Verifying Checksum
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m9398808236ff: Download complete
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m9398808236ff: Pull complete
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mb1aefb76c976: Verifying Checksum
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mb1aefb76c976: Download complete
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m9435942978a8: Verifying Checksum
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m9435942978a8: Download complete
-[0m[1mmodule.architecture.null_resource.kubernetis_apply: Still creating... [30s elapsed][0m[0m
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m9435942978a8: Pull complete
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0me3224c89a676: Pull complete
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mb1aefb76c976: Pull complete
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mDigest: sha256:6abd1eabeba303403a2ffbbbd104e21b01d37b1e39faecabac32211b595402cb
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mb4340dbb4038: Verifying Checksum
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mb4340dbb4038: Download complete
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mae32898c3dd5: Download complete
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mb4340dbb4038: Pull complete
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m7d026b0a28dd: Pull complete
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mae32898c3dd5: Pull complete
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mDigest: sha256:c8e4f0ad53631bbf60449e394a33c5b8b091343a8702bd03615c7c13ae4c445d
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStatus: Downloaded newer image for node:21-alpine3.17
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> 7287bca82fbe
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 2/10 : RUN apk add git
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in 73bbce40d5c3
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> f9b7cc81ab11
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 2/11 : RUN apk add git
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in 751c9afe2528
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mfetch https://dl-cdn.alpinelinux.org/alpine/v3.17/main/x86_64/APKINDEX.tar.gz
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mfetch https://dl-cdn.alpinelinux.org/alpine/v3.17/community/x86_64/APKINDEX.tar.gz
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m(1/7) Installing ca-certificates (20230506-r0)
@@ -685,26 +661,27 @@ Changes to Outputs:
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m(5/7) Installing libexpat (2.5.0-r0)
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m(6/7) Installing pcre2 (10.42-r0)
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m(7/7) Installing git (2.38.5-r0)
+[0m[1mmodule.architecture.null_resource.kubernetis_apply: Still creating... [30s elapsed][0m[0m
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mExecuting busybox-1.35.0-r29.trigger
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mExecuting ca-certificates-20230506-r0.trigger
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mOK: 18 MiB in 24 packages
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container 73bbce40d5c3
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> 59ed789e9a7a
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 3/10 : RUN git clone https://github.com/Mostafa-Yehia/simple-node-app.git /app
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in e3ebc0e1a4b7
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container 751c9afe2528
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> 00690182ae59
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 3/11 : RUN git clone https://github.com/Mostafa-Yehia/simple-node-app.git /app
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in e57b6f2df3e2
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m[91mCloning into '/app'...
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m[0m
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container e3ebc0e1a4b7
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> 99587d46aa17
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 4/10 : WORKDIR /app
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in 7e66f628e506
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container 7e66f628e506
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> b0c38fdd4c62
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 5/10 : RUN npm i
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in ae11086a4c4f
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container e57b6f2df3e2
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> 3b9ce33eecf1
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 4/11 : WORKDIR /app
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in 5a5a31ee3038
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container 5a5a31ee3038
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> fa39edf989f1
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 5/11 : RUN npm i
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in 76b8779a2dbf
 [0m[1mmodule.architecture.null_resource.kubernetis_apply: Still creating... [40s elapsed][0m[0m
 
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0madded 76 packages, and audited 77 packages in 10s
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0madded 76 packages, and audited 77 packages in 11s
 
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m11 packages are looking for funding
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m  run `npm fund` for details
@@ -714,55 +691,58 @@ Changes to Outputs:
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mnpm notice New patch version of npm available! 10.2.0 -> 10.2.1
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mnpm notice Changelog: <https://github.com/npm/cli/releases/tag/v10.2.1>
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mnpm notice Run `npm install -g npm@10.2.1` to update!
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mnpm notice
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mnpm [0m[91mnotice
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m[0m
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container ae11086a4c4f
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> 450a5258f4e0
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 6/10 : ENV DBhosts="mongo-0.mongo:27017"
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in 4f2994719da7
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container 4f2994719da7
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> ffae7a0dcc24
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 7/10 : ENV WEBport="3000"
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in 8b00d111efbc
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container 8b00d111efbc
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> 9b3b0be85a00
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 8/10 : ENV DBuser="test"
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in 6fd7d1b2383d
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container 6fd7d1b2383d
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> 86527286b444
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 9/10 : ENV DBpass="test123"
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in 00d9d7d169c5
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container 00d9d7d169c5
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> ce27895203ea
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 10/10 : ENTRYPOINT [ "node","index.js" ]
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in 0445cb40cc55
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container 0445cb40cc55
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> c32b6aa01fdc
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mSuccessfully built c32b6aa01fdc
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container 76b8779a2dbf
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> 92c2dbb00ec6
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 6/11 : ENV DBhosts="mongo-0.mongo:27017"
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in 4c84213b0cda
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container 4c84213b0cda
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> 1f86e09d4bb3
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 7/11 : ENV WEBport="3000"
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in 3638a5d865af
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container 3638a5d865af
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> df411cdc19a1
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 8/11 : ENV DBuser="test"
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in cab4704a7699
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container cab4704a7699
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> 730084de905f
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 9/11 : ENV DBpass="test123"
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in b8fa00d3f892
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container b8fa00d3f892
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> badb83e47289
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 10/11 : EXPOSE 3000
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in c857e80011c1
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container c857e80011c1
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> d0223594e464
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 11/11 : ENTRYPOINT [ "node","index.js" ]
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in 090fff5e9152
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container 090fff5e9152
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> 55bb184b711b
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mSuccessfully built 55bb184b711b
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mSuccessfully tagged us-east1-docker.pkg.dev/ahmed-attia-iti/iti-webapp-project-repo/web:1
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mThe push refers to repository [us-east1-docker.pkg.dev/ahmed-attia-iti/iti-webapp-project-repo/web]
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m6f008b0ce6c3: Preparing
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mb2a97b54dff4: Preparing
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m424091f31f34: Preparing
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m8ae39ab6830c: Preparing
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m2b921125eab5: Preparing
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mf2b4b2f8eaa3: Preparing
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m747924e95e4b: Preparing
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m302ee807563c: Preparing
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mb60b56c8e386: Preparing
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m1746a8e3dad4: Preparing
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0ma26c13d84869: Preparing
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mcaf7b182351d: Preparing
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m36b50b131297: Preparing
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mf2b4b2f8eaa3: Waiting
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mcaf7b182351d: Waiting
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m36b50b131297: Waiting
 [0m[1mmodule.architecture.null_resource.kubernetis_apply: Still creating... [50s elapsed][0m[0m
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mb2a97b54dff4: Pushed
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m8ae39ab6830c: Pushed
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m6f008b0ce6c3: Pushed
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m424091f31f34: Pushed
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m2b921125eab5: Pushed
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m302ee807563c: Pushed
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m1746a8e3dad4: Pushed
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m747924e95e4b: Pushed
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mb60b56c8e386: Pushed
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0ma26c13d84869: Pushed
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m36b50b131297: Pushed
 [0m[1mmodule.architecture.null_resource.kubernetis_apply: Still creating... [1m0s elapsed][0m[0m
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mf2b4b2f8eaa3: Pushed
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m1: digest: sha256:302614f0d11713e3f8128a6a7f06d004fb7506d7d4c0ac0d24eb7b7a4a4af30e size: 1789
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mcaf7b182351d: Pushed
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m1: digest: sha256:78bc2eedc9f320e08bbe510bababc8c8c42efff22a2ea1a3291f8ac7c7af0dc7 size: 1789
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mSending build context to Docker daemon  6.144kB
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 1/4 : FROM docker.io/library/mongo:7.0.2-jammy
-[0m[1mmodule.architecture.null_resource.kubernetis_apply: Still creating... [1m10s elapsed][0m[0m
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m7.0.2-jammy: Pulling from library/mongo
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m43f89b94cd7d: Pulling fs layer
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m54a7480baa9d: Pulling fs layer
@@ -773,26 +753,27 @@ Changes to Outputs:
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m72919e34fde8: Pulling fs layer
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mab22810dfc64: Pulling fs layer
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mfb05c29fbdf5: Pulling fs layer
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m5e4470f2e90f: Waiting
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m40d046ff8fd3: Waiting
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0me062d62b861e: Waiting
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m72919e34fde8: Waiting
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mab22810dfc64: Waiting
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mfb05c29fbdf5: Waiting
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m5e4470f2e90f: Waiting
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m40d046ff8fd3: Waiting
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m54a7480baa9d: Verifying Checksum
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m54a7480baa9d: Download complete
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m7f9301fbd7df: Verifying Checksum
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m7f9301fbd7df: Download complete
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m43f89b94cd7d: Verifying Checksum
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m43f89b94cd7d: Download complete
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m5e4470f2e90f: Verifying Checksum
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m5e4470f2e90f: Download complete
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m40d046ff8fd3: Verifying Checksum
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m40d046ff8fd3: Download complete
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m5e4470f2e90f: Verifying Checksum
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m5e4470f2e90f: Download complete
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0me062d62b861e: Verifying Checksum
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0me062d62b861e: Download complete
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m72919e34fde8: Verifying Checksum
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m72919e34fde8: Download complete
+[0m[1mmodule.architecture.null_resource.kubernetis_apply: Still creating... [1m10s elapsed][0m[0m
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mfb05c29fbdf5: Verifying Checksum
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mfb05c29fbdf5: Download complete
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m43f89b94cd7d: Pull complete
@@ -811,20 +792,19 @@ Changes to Outputs:
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStatus: Downloaded newer image for mongo:7.0.2-jammy
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> ee3b4d1239f1
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 2/4 : USER root
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in 6cf40995dd64
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container 6cf40995dd64
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> d974bf1fef2f
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in aea2a81137cf
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container aea2a81137cf
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> d91471aba4e3
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 3/4 : COPY ./init.sh /
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> a381b5a35ae5
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> 6ff128b062bb
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 4/4 : ENTRYPOINT ["docker-entrypoint.sh" ]
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in 2c1051ca5b12
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container 2c1051ca5b12
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> fd0366d2c7a1
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mSuccessfully built fd0366d2c7a1
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> Running in ab3e2a80045d
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mRemoving intermediate container ab3e2a80045d
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m ---> da83848d22f4
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mSuccessfully built da83848d22f4
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mSuccessfully tagged us-east1-docker.pkg.dev/ahmed-attia-iti/iti-webapp-project-repo/mongo:1
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mThe push refers to repository [us-east1-docker.pkg.dev/ahmed-attia-iti/iti-webapp-project-repo/mongo]
-[0m[1mmodule.architecture.null_resource.kubernetis_apply: Still creating... [1m30s elapsed][0m[0m
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mdfbb8335a36a: Preparing
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mc125e99d7b56: Preparing
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m4810ff4445b6: Preparing
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m92ef1e85f076: Preparing
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m433e9800709f: Preparing
@@ -839,10 +819,11 @@ Changes to Outputs:
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0ma1098b7ced4c: Waiting
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0ma51422a43030: Waiting
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m256d88da4185: Waiting
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mdfbb8335a36a: Pushed
+[0m[1mmodule.architecture.null_resource.kubernetis_apply: Still creating... [1m30s elapsed][0m[0m
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mc125e99d7b56: Pushed
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m4810ff4445b6: Pushed
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mb3f819a0c879: Pushed
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m433e9800709f: Pushed
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mb3f819a0c879: Pushed
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m2eb43e656c92: Pushed
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0me37b8b8fe113: Pushed
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0ma51422a43030: Pushed
@@ -850,9 +831,9 @@ Changes to Outputs:
 [0m[1mmodule.architecture.null_resource.kubernetis_apply: Still creating... [1m40s elapsed][0m[0m
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m256d88da4185: Pushed
 [0m[1mmodule.architecture.null_resource.kubernetis_apply: Still creating... [1m50s elapsed][0m[0m
-[0m[1mmodule.architecture.null_resource.kubernetis_apply: Still creating... [2m0s elapsed][0m[0m
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m92ef1e85f076: Pushed
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m1: digest: sha256:74b5010dc14417460b946323c0e07298fd064a28efdb447ef771b96eade07bb8 size: 2409
+[0m[1mmodule.architecture.null_resource.kubernetis_apply: Still creating... [2m0s elapsed][0m[0m
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m1: digest: sha256:19727f94d3bee710d6b65a02d56f2d5fc3ef467b1556fa7ac72d6adab217d27f size: 2409
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mSending build context to Docker daemon  6.144kB
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mStep 1/1 : FROM docker.io/library/alpine:3.18.4
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m3.18.4: Pulling from library/alpine
@@ -870,14 +851,13 @@ Changes to Outputs:
 [0m[1mmodule.architecture.null_resource.kubernetis_apply: Still creating... [2m10s elapsed][0m[0m
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mcc2447e1835a: Pushed
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0m1: digest: sha256:48d9183eb12a05c99bcc0bf44a003607b8e941e1d4f41f9ad12bdcc4b5672f86 size: 528
-[0m[1mmodule.architecture.null_resource.kubernetis_apply: Still creating... [2m20s elapsed][0m[0m
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mNAME: gke-iti-project
-[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mLAST DEPLOYED: Wed Oct 25 14:12:04 2023
+[0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mLAST DEPLOYED: Thu Oct 26 13:09:12 2023
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mNAMESPACE: default
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mSTATUS: deployed
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mREVISION: 1
 [0m[1mmodule.architecture.null_resource.kubernetis_apply (local-exec):[0m [0mTEST SUITE: None
-[0m[1mmodule.architecture.null_resource.kubernetis_apply: Creation complete after 2m26s [id=6576998998537098842][0m
+[0m[1mmodule.architecture.null_resource.kubernetis_apply: Creation complete after 2m20s [id=5132599911106162614][0m
 [0m[1m[32m
 Apply complete! Resources: 17 added, 0 changed, 0 destroyed.
 [0m[0m[1m[32m
